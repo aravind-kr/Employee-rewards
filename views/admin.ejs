@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <style type="text/css">
+        #topmenu , #submenu{
+            margin-bottom: 0px;
+        }
+
+        #topmenu{
+            padding: 10px 0px 10px 0px;
+        }
+
+        .menu-item{
+            padding: 0px 0px 0px 0px;
+        }
+
+        .removePadd>li>a{padding:5px!important;}
+
+        .navbar{
+            min-height: 30px;
+        }
+        .nav-tabs li a{background-color: #f8f8f8; color:#333}
+        .nav-tabs li.active a{background-color: #428bca; color:#fff;}
+        .nav-tabs li.focus a{background-color: #428bca; color:#fff;}
+        .tab-content {
+            color : white;
+            background-color: #428bca;
+            padding : 5px 15px;
+        }
+
+        .Content-heading{
+            padding : 5px 15px;
+        }
+
+        .main{
+            margin-top: 30px;
+        }
+
+        #Add, #View{
+            padding: 20px;
+        }
+
+        #user {
+            color: #333;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            margin-top: 20px  ;
+            background-color: #c6c6c6;
+        }
+
+        #messages{
+            color:#fff;
+            padding:5px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body onload="Loading()">
+
+<div class="navbar navbar-default navbar-static-top hidden-xs" id="topmenu">
+    <div class="container">
+        <div class="col-sm-offset-4 col-sm-4">
+            <a href="test.html" class="navbar-brand hover-class" style="font-size:24px; margin-left:25px;"> Employee Rewards </a><!--end of navbar-brand-->
+        </div>
+
+    </div><!-- end of navbar-container -->
+</div><!-- end of navbar -->
+
+<div class="navbar navbar-default navbar-static-top" id="submenu">
+    <div class="container">
+        <div class="col-sm-offset-4 col-sm-4 hidden-sm hidden-md hidden-lg">
+            <a href="test.html" class="navbar-brand hover-class" style="font-size:24px;"> Employee Rewards </a><!--end of navbar-brand-->
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="col-sm-2"></div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav removePadd col-sm-8 ">
+                <li class="col-xs-12 col-sm-3 menu-item active" style="text-align:center;">
+                    <a href="#"><span class="glyphicon glyphicon-education"></span> Employee</a>
+                </li>
+                <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-gift"></span> Rewards <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu" style="margin-left:20px;" role="menu" aria-labelledby="dLabel">
+                        <li><a tabindex="-1" href="#">Add Rewards</a></li>
+                        <li><a tabindex="-1" href="#">View Rewards</a></li>
+                    </ul>
+                </li>
+                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;"><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Reports</a></li>
+                <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User<span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="margin-left:10px;" role="menu" aria-labelledby="dLabel">
+                        <li><form method="post" action="/logout"><button type="submit" style="margin-left: 30px;" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-power"></span> Signout
+                                </button></form></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="main">
+        <ul  class="nav nav-tabs">
+            <li  id="adduserpane" class="active col-sm-2" style="padding : 0px; text-align:center;">
+                <a id="addUser" class="Content-heading" href="#1a" data-toggle="tab">Add Employee</a>
+            </li>
+            <li id="viewuserpane" class="col-sm-2" style="padding : 0px; text-align:center;">
+                <a class="Content-heading" href="#2a" data-toggle="tab">View  Employee</a>
+            </li>
+        </ul>
+
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="1a">
+                <h3 id="addTitle" style="padding:20px 20px 20px 80px;">Add Employee : </h3>
+                <form id="addForm" role="form" method="post" action="/add">
+                    <div class="form-group row">
+                        <div class="col-sm-offset-1 col-sm-4">
+                            <input type="text" class="form-control" name="firstName" placeholder="First Name">
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class=" col-sm-offset-1 col-sm-4">
+                            <input type="email" class="form-control" name="emailId" placeholder="Email ID">
+                        </div>
+                        <div class=" col-sm-offset-2 col-sm-4">
+                            <input type="number" class="form-control" name="id" placeholder="Employee ID">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12">
+                            <div id="messages"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div  class="col-sm-offset-5 col-sm-1">
+                            <button id="AddBtn" type="submit" class="btn btn-success">Add</button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="reset" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="2a">
+                <div id="View" class="col-xs-12">
+                    <h3>View Employee : </h3>
+
+                    <% if(user.count == 0){ %>
+                    <p><span class="glyphicon glyphicon-remove-circle"></span> There are no Employee Registered!</p>
+                    <% } else { %>
+                    <div class="table-responsive well">
+                        <table class="table table-striped" id="user">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% for(var item in user) { %>
+
+                                <tr>
+                                    <td><%= user[item].id %></td>
+                                    <td><%= user[item].firstName %></td>
+                                    <td><%= user[item].lastName %></td>
+                                    <td><%= user[item].emailId %></td>
+                                    <td>
+                                        <span onclick="editUser()" class="glyphicon glyphicon-edit"></span>
+                                        <span onclick="deleteUser(<%= user[item].id %>)" class="glyphicon glyphicon-remove"></span>
+                                    </td>
+                                </tr>
+                            <% }%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="row-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-4 col-sm-4">
+                <img class="img-rounded" style="border-radius : 100px; margin-left:150px; margin-top:20px;" height="75px" width="75px" src="images/logo.jpg" alt="logo">
+                <div class="col-xs-12 col-sm-12">
+                    <p><span class="glyphicon glyphicon-copyright-mark"></span>  All the rights for this sights are reserved 2016 !</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/script.js"></script>
+
+</body>
+
+</html>

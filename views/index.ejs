@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><% title%></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <style type="text/css">
+
+
+    .navbar {
+      height: 70px;
+      background-color: #59556d;
+      margin-bottom: 0px;
+    }
+
+    .hover-class{
+      margin-top: 10px;
+      font-family: Georgia, serif;
+      color: #fff;
+    }
+
+    .hover-class:hover{
+      margin-top: 10px;
+      font-family: Georgia, serif;
+      color:cornflowerblue;
+    }
+
+    .login-form{
+      margin-top: 135px;
+      margin-left: 30px;
+    }
+
+    label {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <div class="container">
+    <a href="test.html" class="navbar-brand hover-class" style="font-size:24px; width:100%; text-align:center;"> Employee Rewards </a><!--end of navbar-brand-->
+  </div><!-- end of navbar-container -->
+</div><!-- end of navbar -->
+
+<div class="container-fluid">
+  <div class="login-form col-sm-5">
+    <form id="loginform" class="form-horizontal" role="form" method="post" action="/login">
+      <h2 class="login-heading col-sm-12" style="padding-left:175px; padding-bottom:30px; color:#fff;">Login </h2>
+      <div class="form-group">
+        <label class="control-label col-sm-2 hover-class" for="id">UserId:</label>
+        <div class="col-sm-8">
+          <input type="number" title="User ID" class="form-control" id="id" name="id" placeholder="User Id...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2 hover-class" for="pwd">Password:</label>
+        <div class="col-sm-8">
+          <input type="password" title="Password" class="form-control" id="pwd" name="pass" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-9 col-xs-offset-3">
+          <div id="messages" style="color:#f33; font-weight: bold;"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label class="hover-class"><input type="checkbox"> Remember me</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="/javascripts/jquery.backstretch.min.js"></script>
+
+<script>
+  $.backstretch("/images/main.jpg");
+
+    $(document).ready(function(){
+        $("#loginform").submit(function(){
+            var bool = true, errorArr =[];
+            $("#loginform input").each(function(){
+                if($(this).val() == ""){
+                    errorArr.push($(this).attr("title")+ " is required");
+                    bool = false;
+                }
+            });
+            
+            if(bool == false){
+                var iconMsg = errorArr.join(", ");
+                $("#messages").empty().html(iconMsg);
+                return false;
+            }
+        });
+    })
+</script>
+
+</body>
+
+</html>
