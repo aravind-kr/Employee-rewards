@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <title><% title%></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <style type="text/css">
         #topmenu , #submenu{
@@ -34,20 +34,12 @@
             padding : 5px 15px;
         }
 
-        .Content-heading{
-            padding : 5px 15px;
+        #form-button{
+            margin-bottom: 5px;
         }
 
         .main{
             margin-top: 30px;
-        }
-
-        #Add, #View{
-            padding: 20px;
-        }
-
-        #user {
-            color: #333;
         }
 
         footer {
@@ -55,28 +47,37 @@
             bottom: 0;
             width: 100%;
             height: 150px;
-            margin-top: 20px  ;
             background-color: #c6c6c6;
         }
 
-        #messages{
-            color:#fff;
-            padding:5px;
-            text-align: center;
-            font-weight: bold;
+        .well{
+            background-color: #428bca;
+            color: #eeeeee;
+        }
+
+        @media screen and (max-width: 1000px) and (min-width: 520px) {
+            footer {
+                position: relative;
+                margin-top: 50px;
+                bottom: 0;
+                width: 100%;
+                height: 150px;
+                background-color: #c6c6c6;
+            }
+
+            input {
+                margin: 10px;
+            }
         }
     </style>
 </head>
-<script type="text/javascript">
-    var $ = require('jquery');
-    $.ajaxSetup({cache : false});
-</script>
-<body onload="Loading()">
+
+<body>
 
 <div class="navbar navbar-default navbar-static-top hidden-xs" id="topmenu">
     <div class="container">
         <div class="col-sm-offset-4 col-sm-4">
-            <a href="test.html" class="navbar-brand hover-class" style="font-size:24px; margin-left:25px;"> Employee Rewards </a><!--end of navbar-brand-->
+            <a href="#" class="navbar-brand hover-class" style="font-size:24px; margin-left:25px;"> Employee Rewards </a><!--end of navbar-brand-->
         </div>
 
     </div><!-- end of navbar-container -->
@@ -95,13 +96,13 @@
         <div class="col-sm-2"></div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav removePadd col-sm-8 ">
-                <li class="col-xs-12 col-sm-3 menu-item active" style="text-align:center;">
+                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;">
                     <a href="#"><span class="glyphicon glyphicon-education"></span> Employee</a>
                 </li>
                 <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-gift"></span> Rewards <span class="caret"></span></a>
 
-                    <ul class="dropdown-menu" style="margin-left:20px;" role="menu" aria-labelledby="dLabel">
+                    <ul class="dropdown-menu" style="margin-left:15px;" role="menu" aria-labelledby="dLabel">
                         <li><a tabindex="-1" href="/reward">Add Rewards</a></li>
                         <li><a tabindex="-1" href="/view">View Rewards</a></li>
                     </ul>
@@ -121,43 +122,73 @@
 </div>
 
 <div class="container">
-    <div class="main">
-        <ul  class="nav nav-tabs">
-            <li  id="adduserpane" class="active col-sm-2" style="padding : 0px; text-align:center;">
-                <a id="addUser" class="Content-heading" href="#1a" data-toggle="tab">Add Employee</a>
-            </li>
-            <li id="viewuserpane" class="col-sm-2" style="padding : 0px; text-align:center;">
-                <a class="Content-heading" href="#2a" data-toggle="tab">View  Employee</a>
-            </li>
-        </ul>
-
-        <div class="tab-content clearfix">
-            <div class="tab-pane active" id="1a">
-                <h3 id="addTitle" style="padding:20px 20px 20px 80px;">Add Employee : </h3>
-                <form id="addForm" role="form" method="post" action="/add">
-                    <div class="form-group row">
-                        <div class="col-sm-offset-1 col-sm-4">
-                            <input type="text" class="form-control" name="firstName" placeholder="First Name">
-                        </div>
-                        <div class="col-sm-offset-2 col-sm-4">
-                            <input type="text" class="form-control" name="lastName" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class=" col-sm-offset-1 col-sm-4">
-                            <input type="email" class="form-control" name="emailId" placeholder="Email ID">
-                        </div>
-                        <div class=" col-sm-offset-2 col-sm-4">
-                            <input type="number" class="form-control" name="id" placeholder="Employee ID">
-                        </div>
-                    </div>
+    <div class="main row">
+        <div class="well col-sm-offset-3 col-sm-6">
+            <div class="Rewardform">
+                <h3 id="addTitle" style="paddin:0px 40px 10px 0px;">Add Rewards :</h3>
+                <form id="addForm" method="post" action="/addr">
                     <div class="form-group">
-                        <div class="col-xs-12 col-sm-12">
-                            <div id="messages"></div>
+                        <div class="col-sm-4 col-xs-12">
+                            <label>Employee ID :</label><br>
+                            <% if(user.count == 0){ %>
+                            <select class="form-control">
+                                <option value="0">0</option>
+                            </select>
+                            <% } else { %>
+                            <select id="empid" oninput="fill()" class="form-control" name="id">
+                                <option value="0">0</option>
+                                <% for(var item in user) { %>
+                                <option value="<%= user[item].id  %>"><%= user[item].id %></option>
+                                <% } %>
+                            </select>
+                            <% } %>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <label>FirstName :</label><br>
+                            <input type="text" id="fname" class="form-control" Firstname="lastName" placeholder="Last Name" readonly>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <label>LastName :</label><br>
+                            <input type="text" id="lname" class="form-control" Lastname="lastName" placeholder="Last Name" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div  class="col-sm-offset-5 col-sm-1">
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="col-sm-12 col-xs-12 form-item">
+                                <label>Points : </label><br>
+                                <select name="points" class="form-control">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <option value="60">60</option>
+                                    <option value="70">70</option>
+                                    <option value="80">80</option>
+                                    <option value="90">90</option>
+                                    <option value="100">100</option>
+                                </select><br>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 form-item">
+                                <label>Show to user :</label><br>
+                                <select class="form-control" name="Show">
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select><br>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 form-item">
+                                <label>Date :</label><br>
+                                <input style="color:#333;" type="date" name="date">
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-12">
+                            <br>
+                            <label>Reason :</label><br>
+                            <textarea class="form-control" rows="5" cols="53" name="reason"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="form-button">
+                        <div class="col-sm-offset-4 col-sm-2">
                             <button id="AddBtn" type="submit" class="btn btn-success">Add</button>
                         </div>
                         <div class="col-sm-1">
@@ -165,45 +196,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-
-            <div class="tab-pane" id="2a">
-                <div id="View" class="col-xs-12">
-                    <h3>View Employee : </h3>
-fill
-                    <% if(user.count == 0){ %>
-                    <p><span class="glyphicon glyphicon-remove-circle"></span> There are no Employee Registered!</p>
-                    <% } else { %>
-                    <div class="table-responsive well">
-                        <table class="table table-striped" id="user">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <% for(var item in user) { %>
-
-                                <tr>
-                                    <td><%= user[item].id %></td>
-                                    <td><%= user[item].firstName %></td>
-                                    <td><%= user[item].lastName %></td>
-                                    <td><%= user[item].emailId %></td>
-                                    <td>
-                                        <span onclick="editUser()" class="glyphicon glyphicon-edit"></span>
-                                        <span onclick="deleteUser(<%= user[item].id %>)" class="glyphicon glyphicon-remove"></span>
-                                    </td>
-                                </tr>
-                            <% }%>
-                            </tbody>
-                        </table>
-                    </div>
-                    <% } %>
-                </div>
             </div>
         </div>
     </div>
@@ -223,8 +215,10 @@ fill
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/javascripts/script.js"></script>
+
+<script type="text/javascript" src="/javascripts/rscript.js"></script>
 
 </body>
 

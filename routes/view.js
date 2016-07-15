@@ -3,10 +3,10 @@ var router = express.Router();
 var fs = require('fs');
 
 router.get('/', function(req, res, next) {
-    var users = JSON.parse(fs.readFileSync('/run/media/arvindkr/Entertainment/arvind/documents/Employee Rewards/user-list.json', 'utf8'));
-    res.render('admin', {
+    var users = JSON.parse(fs.readFileSync('/run/media/arvindkr/Entertainment/arvind/documents/Employee Rewards/rewards.json', 'utf8'));
+    res.render('view', {
         title: 'Express' ,
-        user : users.user,
+        reward : users
     });
 });
 
