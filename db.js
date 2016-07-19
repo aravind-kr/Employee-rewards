@@ -23,5 +23,5 @@ var rewards = mongoose.Schema({
 var employee = mongoose.model('employee', employee, "test");
 var reward = mongoose.model('reward',rewards,"rewards");
 
-var dbHost = 'mongodb://arvind:arvind@ds021034.mlab.com:21034/user-details';
+var dbHost = 'mongodb://<dbuser>:<dbpassword>@ds021034.mlab.com:21034/user-details';
 mongoose.connect(dbHost);
