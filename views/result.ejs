@@ -3,65 +3,61 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script src="/javascripts/result_script.js"></script>
-    <style type="text/css">
-        #topmenu , #submenu{
-            margin-bottom: 0px;
-        }
-
-        #topmenu{
-            padding: 10px 0px 10px 0px;
-        }
-
-        .menu-item{
-            padding: 0px 0px 0px 0px;
-        }
-
-        .removePadd>li>a{padding:5px!important;}
-
-        .navbar{
-            min-height: 30px;
-        }
-        .nav-tabs li a{background-color: #f8f8f8; color:#333}
-        .nav-tabs li.active a{background-color: #428bca; color:#fff;}
-        .nav-tabs li.focus a{background-color: #428bca; color:#fff;}
-        .tab-content {
-            color : white;
-            background-color: #428bca;
-            padding : 5px 15px;
-        }
-
-        footer {
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            height: 150px;
-            background-color: #c6c6c6;
-        }
-
-        #rewards{
-            border: 1px solid #ddd;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-        select {
-            margin-top: 10px;
-        }
-        label , select , button{
-            padding: 20px;
-        }
-        .well{
-            margin-top: 30px;
-            position: relative;
-        }
-
-        #chartContainer{
-            position: relative;
-        }
-    </style>
+    <script type="text/javascript" src="/javascripts/result_script.js"></script>
 </head>
-<body>
+<style type="text/css">
+    #topmenu , #submenu{
+        margin-bottom: 0px;
+    }
 
+    #topmenu{
+        padding: 10px 0px 10px 0px;
+    }
+
+    .menu-item{
+        padding: 0px 0px 0px 0px;
+    }
+
+    .removePadd>li>a{padding:5px!important;}
+
+    .navbar{
+        min-height: 30px;
+    }
+    .nav-tabs li a{background-color: #f8f8f8; color:#333}
+    .nav-tabs li.active a{background-color: #428bca; color:#fff;}
+    .nav-tabs li.focus a{background-color: #428bca; color:#fff;}
+    .tab-content {
+        color : white;
+        background-color: #428bca;
+        padding : 5px 15px;
+    }
+
+    footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        height: 150px;
+        background-color: #c6c6c6;
+    }
+
+    #rewards{
+        border: 1px solid #ddd;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    label{
+        padding: 5px;
+    }
+    .well{
+        margin-top: 30px;
+        position: relative;
+    }
+
+    #chartContainer{
+        position: relative;
+    }
+</style>
+<body>
 <div class="navbar navbar-default navbar-static-top hidden-xs" id="topmenu">
     <div class="container">
         <div class="col-sm-offset-4 col-sm-4">
@@ -84,24 +80,26 @@
         <div class="col-sm-2"></div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav removePadd col-sm-8 ">
-                <li class="col-xs-12 col-sm-3 menu-item active" style="text-align:center;">
-                    <a href="#"><span class="glyphicon glyphicon-education"></span> Employee</a>
+                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;">
+                    <a href="/admin"><span class="glyphicon glyphicon-education"></span> Employee</a>
                 </li>
                 <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-gift"></span> Rewards <span class="caret"></span></a>
 
                     <ul class="dropdown-menu" style="margin-left:20px;" role="menu" aria-labelledby="dLabel">
-                        <li><a tabindex="-1" href="#">Add Rewards</a></li>
-                        <li><a tabindex="-1" href="#">View Rewards</a></li>
+                        <li><a tabindex="-1" href="/reward">Add Rewards</a></li>
+                        <li><a tabindex="-1" href="/view">View Rewards</a></li>
                     </ul>
                 </li>
-                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;"><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Reports</a></li>
+                <li class="col-xs-12 col-sm-3 menu-item active" style="text-align:center;"><a href="/result"><span class="glyphicon glyphicon-folder-open"></span> Reports</a></li>
                 <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User<span class="caret"></span></a>
                     <ul class="dropdown-menu" style="margin-left:10px;" role="menu" aria-labelledby="dLabel">
-                        <li><form method="post" action="/logout"><button type="submit" style="margin-left: 30px;" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-power"></span> Signout
-                                </button></form></li>
+                        <li>
+                            <form method="post" action="/logout"><button type="submit" style="margin-left: 30px;" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-power"></span> Signout</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -113,38 +111,33 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="well col-xs-offset-4 col-xs-4">
-                <form role="form">
-                    <h3 class="Row-heading">Results :</h3>
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <label class="col-xs-3">Employee Id:</label>
-                            <div class="col-xs-9">
-                                <select id="empid" class="form-control">
-                                    <option>None</option>
-                                    <% for(var item in user) { %>
-                                    <option><%= user[item].id %></option>
-                                    <% }%>
-                                </select>
-                            </div>
-                        </div>
+                <div class="col-xs-offset-2 col-xs-8 radio">
+                    <label><input id="view" onclick="document.getElementById('startdate').disabled = true; document.getElementById('enddate').disabled = true;" type="radio" name="data" checked>View All Data</label>
+
+                    <label><input id="date" onclick="document.getElementById('startdate').disabled = false; document.getElementById('enddate').disabled = false;" type="radio" name="data">Select Date range</label>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <div class="col-xs-12 date">
+                        <label> Start Date :</label><input type="date" id="startdate" name="bday" disabled>
                     </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-4">
-                            <button type="submit" onclick="result()" class="btn btn-primary">Get Results!</button>
-                        </div>
-                        <div class="col-xs-2">
-                            <button type="reset" class="btn btn-default">Cancel</button>
-                        </div>
+                    <div class="col-xs-12 date">
+                        <label> End Date : </label><input type="date" id="enddate" name="bday" disabled>
                     </div>
-                </form>
+                </div>
+                <div class="row">
+                    <div class="col-xs-offset-2 col-xs-4">
+                        <button class="btn btn-primary" onclick="result()">Get Results</button>
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div id="chartContainer" style="height: 300px; width: 900px; margin-left:250px;"></div>
 
-
-
+<div id="chartContainer" style="height: 300px; width: 60%; margin-left: 250px;"></div>
 
 <footer class="row-footer">
     <div class="container">
@@ -158,6 +151,7 @@
         </div>
     </div>
 </footer>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>

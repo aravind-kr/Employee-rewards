@@ -197,7 +197,8 @@ app.post('/addr', function (req, res) {
     var count = db.getData('/count');
     new reward_model({
         No : count,
-        EmployeeId    : req.body.id,
+        Name : req.body.fname,
+        EmployeeId : req.body.id,
         showToUser : req.body.Show,
         Date : req.body.date,
         Points : req.body.points,
@@ -208,6 +209,7 @@ app.post('/addr', function (req, res) {
 
 
     db.push('/rewards/'+count+'/No',count);
+    db.push('/rewards/'+count+'/Name',req.body.fname);
     db.push('/rewards/'+count+'/id',req.body.id);
     db.push('/rewards/'+count+'/show',req.body.Show);
     db.push('/rewards/'+count+'/date',req.body.date);
@@ -227,7 +229,7 @@ app.post('/delReward', function (req, res) {
         });
         
         var id = req.body.id ;
-        //console.log(id);
+        //console.log(id)
         var db = new json("rewards",true,false);
         var count = db.getData('/count');
         db.delete('/rewards/'+id);
@@ -240,20 +242,24 @@ app.post('/delReward', function (req, res) {
 app.post('/result', function (req, res) {
     console.log(req.body);
     var obj = [];
-    var obj2 = [];
-    var db = new json("rewards",true,false);
+    var db = new json("rewards", true, false);
     var rewards = db.getData('/rewards');
-    
-    for(var item in rewards){
-        if (rewards[item].id == req.body.id){
-            obj.push({label : req.body.id , y : rewards[item].Points });
+
+    if(req.body.start && req.body.end) {
+        for(var item in rewards){
+            if(rewards[item].date >= req.body.start && rewards[item].date <= req.body.end){
+                obj.push({"y": parseInt(rewards[item].Points), "label": rewards[item].Name});
+            }
+        }
+    }else{
+        for (var item in rewards) {
+            obj.push({"y": parseInt(rewards[item].Points), "label": rewards[item].Name });
         }
     }
     console.log(obj);
     
-    res.send(obj);
+    res.send(JSON.stringify(obj));
 });
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

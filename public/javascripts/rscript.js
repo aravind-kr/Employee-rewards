@@ -1,5 +1,17 @@
 var $ = require('jquery');
 
+function loading() {
+    if(localStorage.getItem("EditUser")) {
+        alert("This is working");
+        var title = document.getElementById('addTitle');
+        var button = document.getElementById('AddBtn');
+        var form = document.getElementById('addForm');
+        title.innerHTML = "Update Reward : ";
+        button.innerHTML = "Update";
+        window.localStorage.clear();
+    }
+}
+
 function fill() {
     var id = document.getElementById('empid').value;
 

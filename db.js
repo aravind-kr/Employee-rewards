@@ -12,6 +12,7 @@ var employee = mongoose.Schema({
 
 var rewards = mongoose.Schema({
     No : Number,
+    Name : String,
     EmployeeId : Number,
     Date: { type: Date, default: Date.now },
     Reason: String,

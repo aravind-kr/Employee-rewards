@@ -72,7 +72,7 @@
     </style>
 </head>
 
-<body>
+<body onload="loading()">
 
 <div class="navbar navbar-default navbar-static-top hidden-xs" id="topmenu">
     <div class="container">
@@ -86,7 +86,7 @@
 <div class="navbar navbar-default navbar-static-top" id="submenu">
     <div class="container">
         <div class="col-sm-offset-4 col-sm-4 hidden-sm hidden-md hidden-lg">
-            <a href="test.html" class="navbar-brand hover-class" style="font-size:24px;"> Employee Rewards </a><!--end of navbar-brand-->
+            <a href="/admin" class="navbar-brand hover-class" style="font-size:24px;"> Employee Rewards </a><!--end of navbar-brand-->
         </div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
             <span class="icon-bar"></span>
@@ -97,9 +97,9 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav removePadd col-sm-8 ">
                 <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;">
-                    <a href="#"><span class="glyphicon glyphicon-education"></span> Employee</a>
+                    <a href="/admin"><span class="glyphicon glyphicon-education"></span> Employee</a>
                 </li>
-                <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
+                <li class="col-xs-12 col-sm-3 dropdown menu-item active" style="text-align:center;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-gift"></span> Rewards <span class="caret"></span></a>
 
                     <ul class="dropdown-menu" style="margin-left:15px;" role="menu" aria-labelledby="dLabel">
@@ -107,7 +107,7 @@
                         <li><a tabindex="-1" href="/view">View Rewards</a></li>
                     </ul>
                 </li>
-                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;"><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Reports</a></li>
+                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;"><a href="/result"><span class="glyphicon glyphicon-folder-open"></span> Reports</a></li>
                 <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User<span class="caret"></span></a>
                     <ul class="dropdown-menu" style="margin-left:10px;" role="menu" aria-labelledby="dLabel">
@@ -125,6 +125,7 @@
     <div class="main row">
         <div class="well col-sm-offset-3 col-sm-6">
             <div class="Rewardform">
+
                 <h3 id="addTitle" style="paddin:0px 40px 10px 0px;">Add Rewards :</h3>
                 <form id="addForm" method="post" action="/addr">
                     <div class="form-group">
@@ -145,7 +146,7 @@
                         </div>
                         <div class="col-sm-4 col-xs-12">
                             <label>FirstName :</label><br>
-                            <input type="text" id="fname" class="form-control" Firstname="lastName" placeholder="Last Name" readonly>
+                            <input type="text" id="fname" name="fname" class="form-control" Firstname="lastName" placeholder="Last Name" readonly>
                         </div>
                         <div class="col-sm-4 col-xs-12">
                             <label>LastName :</label><br>

@@ -35,7 +35,7 @@
         }
 
         footer {
-            position: absolute;
+            position: relative;
             bottom: 0;
             width: 100%;
             height: 150px;
@@ -67,7 +67,7 @@
 <div class="navbar navbar-default navbar-static-top hidden-xs" id="topmenu">
     <div class="container">
         <div class="col-sm-offset-4 col-sm-4">
-            <a href="test.html" class="navbar-brand hover-class" style="font-size:24px; margin-left:25px;"> Employee Rewards </a><!--end of navbar-brand-->
+            <a href="/admin" class="navbar-brand hover-class" style="font-size:24px; margin-left:25px;"> Employee Rewards </a><!--end of navbar-brand-->
         </div>
 
     </div><!-- end of navbar-container -->
@@ -86,10 +86,10 @@
         <div class="col-sm-2"></div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav removePadd col-sm-8 ">
-                <li class="col-xs-12 col-sm-3 menu-item active" style="text-align:center;">
-                    <a href="#"><span class="glyphicon glyphicon-education"></span> Employee</a>
+                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;">
+                    <a href="/admin"><span class="glyphicon glyphicon-education"></span> Employee</a>
                 </li>
-                <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
+                <li class="col-xs-12 col-sm-3 dropdown menu-item active" style="text-align:center;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-gift"></span> Rewards <span class="caret"></span></a>
 
                     <ul class="dropdown-menu" style="margin-left:20px;" role="menu" aria-labelledby="dLabel">
@@ -97,7 +97,7 @@
                         <li><a tabindex="-1" href="/view">View Rewards</a></li>
                     </ul>
                 </li>
-                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;"><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Reports</a></li>
+                <li class="col-xs-12 col-sm-3 menu-item" style="text-align:center;"><a href="/view"><span class="glyphicon glyphicon-folder-open"></span> Reports</a></li>
                 <li class="col-xs-12 col-sm-3 dropdown menu-item" style="text-align:center;">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User<span class="caret"></span></a>
                     <ul class="dropdown-menu" style="margin-left:10px;" role="menu" aria-labelledby="dLabel">
@@ -142,6 +142,7 @@
                             <td><%= reward.rewards[item].Points %></td>
                             <td><%= reward.rewards[item].Reason %></td>
                             <td>
+                                <span onclick="editRewards(<%= reward.rewards[item].No %>)" class="glyphicon glyphicon-edit"></span>
                                 <span onclick="del(<%= reward.rewards[item].No %>)" class="glyphicon glyphicon-remove"></span>
                             </td>
                         </tr>

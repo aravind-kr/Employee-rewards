@@ -1,9 +1,18 @@
 var $ = require('jquery');
 
 function result () {
-    var id = document.getElementById('empid').value;
-    var obj = {'id': id } ;
-
+    var view = document.getElementById('view').value;
+    var date = document.getElementById('date').value;
+    var start = document.getElementById('startdate').value;
+    var end = document.getElementById('enddate').value;
+        //document.getElementById('empid').value;
+    var obj = {
+        'view': view ,
+        'date': date,
+        'start': start,
+        'end': end
+    } ;
+    
     $.ajax({
         type: 'POST',
         data: JSON.stringify(obj),
@@ -13,28 +22,25 @@ function result () {
             console.log("Not working");
         }
     }).done(function (result) {
-        var chartData = [];
 
-        for (var i = 0, l = result.length; i < l; i++) {
-            var value = parseFloat(result[i].y);
-            chartData.push({ label: result[i].label , y: value  });
-        }
-        alert(chartData);
-        console.log(chartData);
+        var dataPointsA = JSON.parse(result);
+
+        //console.log(count);
+        
         var chart = new CanvasJS.Chart("chartContainer", {
-            theme: "theme1",//theme1
-            title: {
-                text: "Employee Results"
+            theme: "theme2",//theme1
+            title:{
+                text: "Employee Rewards"
             },
             animationEnabled: false,   // change to true
-            data: [
-                {
-                    // Change type to "bar", "area", "spline", "pie",etc.
-                    type: "bar",
-                    dataPoints: chartData
-                }
-            ]
+            data: [{
+                color: "#62C9C3",
+                type: "bar",
+                dataPoints: dataPointsA
+            } ]
         });
+
+        //chart.render();
         chart.render();
     });
     
