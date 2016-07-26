@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ed1494fe-ddfa-489e-95b5-ec9f4d8e1bab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.js" afterPath="$PROJECT_DIR$/db.js" />
     </list>
     <ignored path="Employee Rewards.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -772,7 +771,7 @@
       <workItem from="1468947770491" duration="1919000" />
       <workItem from="1468949883507" duration="1205000" />
       <workItem from="1468952837275" duration="2189000" />
-      <workItem from="1468955159378" duration="900000" />
+      <workItem from="1468955159378" duration="1532000" />
     </task>
     <task id="LOCAL-00001" summary="Initial and so far">
       <created>1468593238191</created>
@@ -781,11 +780,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468593238191</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Merge branch 'master' of https://github.com/aravind-kr/Employee-rewards&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;">
+      <created>1468956289453</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1468956289453</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161205000" />
+    <option name="totallyTimeSpent" value="161837000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -798,7 +804,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -870,7 +876,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial and so far" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial and so far" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/aravind-kr/Employee-rewards&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/aravind-kr/Employee-rewards&#10;&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
